@@ -1,16 +1,16 @@
 # main/app.py
-import source_loader_c as source_loader_c
-import vector_db_getter
+import parser.c_parser as c_parser
+import vectorestore.chroma_connector as chroma_connector
 import query
 
 print("==" * 10 + " starting get_chunks" + "==" * 10)
 
-chunks = source_loader_c.get_chunks('./source/sample_test.c')
+chunks = c_parser.get_chunks('./batch-source/sample_test.c')
 # chunks = c_source_loader.get_chunks_from_directory('./source')
 
 print("==" * 10 + " starting to add chunks to vector database " + "==" * 10)
 
-db = vector_db_getter.get_vector_db()
+db = chroma_connector.get_vector_db()
 for chunk in chunks:
     db.add_texts(
         texts=[chunk['code']],

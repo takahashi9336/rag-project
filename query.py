@@ -4,9 +4,7 @@ from langchain.prompts import ChatPromptTemplate, PromptTemplate
 from langchain_core.output_parsers import StrOutputParser 
 from langchain_core.runnables import RunnablePassthrough 
 from langchain.retrievers.multi_query import MultiQueryRetriever 
-from vector_db_getter import get_vector_db 
-
-
+from vectorestore.chroma_connector import get_vector_db 
 
 LLM_MODEL = os.getenv('LLM_MODEL', 'phi3') 
 

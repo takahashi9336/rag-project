@@ -5,7 +5,7 @@ import query
 
 print("==" * 10 + " starting get_chunks" + "==" * 10)
 
-chunks = c_parser.get_chunks('./batch-source/sample_test.c')
+chunks = c_parser.get_chunks('./batch_source/sample_test.c')
 # chunks = c_source_loader.get_chunks_from_directory('./source')
 
 print("==" * 10 + " starting to add chunks to vector database " + "==" * 10)

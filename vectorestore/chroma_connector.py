@@ -17,3 +17,13 @@ def get_vector_db():
         embedding_function=embedding
     )
     return db
+
+def get_vector_db(collection_name): 
+    embedding = OllamaEmbeddings(model=EMBEDDING_MODEL)
+
+    db = Chroma(
+        collection_name=collection_name,
+        persist_directory=CHROMA_PATH,
+        embedding_function=embedding
+    )
+    return db

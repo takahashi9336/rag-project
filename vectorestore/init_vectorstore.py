@@ -9,7 +9,7 @@ for chunk in chunks:
     db.add_texts(
         texts=[chunk['code']],
         metadatas=[{
-            'name': chunk['name'],
+            'function_name': chunk['function_name'],
             'start_line': chunk['start_line'],
             'end_line': chunk['end_line'],
             'bytes': chunk['bytes']

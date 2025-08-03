@@ -1,11 +1,12 @@
 import parser.c_parser as c_parser
 import vectorestore.chroma_connector as chroma_connector
 
-chunks = c_parser.get_chunks('./batch_source/sample_test.c')
-# chunks = c_source_loader.get_chunks_from_directory('./source')
+# chunks = c_parser.get_chunks('./batch_source/sample_test.c')
+chunks = c_parser.get_chunks_from_directory('./batch_source')
+merged_chunks = c_parser.merge_chunks(chunks)
 
 db = chroma_connector.get_vector_db()
-for chunk in chunks:
+for chunk in merged_chunks:
     db.add_texts(
         texts=[chunk['code']],
         metadatas=[{
@@ -16,4 +17,4 @@ for chunk in chunks:
         }]
     )
 
-print(f"Added {len(chunks)} function definitions to the vector database.")
+print(f"Added {len(merged_chunks)} function definitions to the vector database.")

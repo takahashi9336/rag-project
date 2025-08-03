@@ -31,13 +31,18 @@ def query(input):
         QUERY_PROMPT, prompt = get_prompt()
 
         # Set up the retriever to generate multiple queries using the language model and the query prompt
+        # retriever = db.as_retriever()
+
         retriever = MultiQueryRetriever.from_llm(
             db.as_retriever(), llm, prompt=QUERY_PROMPT
         )
 
         # Define the processing chain to retrieve context, generate the answer, and parse the output
         chain = (
-            {"context": retriever, "question": RunnablePassthrough()} | prompt | llm | StrOutputParser()
+            {"context": retriever, "question": RunnablePassthrough()} 
+            | prompt 
+            | llm 
+            | StrOutputParser()
         )
         response = chain.invoke(input)
         return response

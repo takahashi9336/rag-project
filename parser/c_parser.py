@@ -54,6 +54,9 @@ def get_chunks(source_path):
     #     print(f['code'])
     #     print("-" * 40)
 
+    # ファイル名を追加
+    chunks.append({"filename": os.path.basename(source_path)})
+
     return chunks
 
 # ★ サブディレクトリを含めた `.c` ファイルすべてを対象に解析

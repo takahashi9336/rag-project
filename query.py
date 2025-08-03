@@ -25,7 +25,7 @@ def query(input):
         llm = ChatOllama(model=LLM_MODEL)
 
         # Get the vector database instance
-        db = get_vector_db()
+        db = get_vector_db('rag-collection')
 
         # Get the prompt templates
         QUERY_PROMPT, prompt = get_prompt()

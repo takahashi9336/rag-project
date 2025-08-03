@@ -1,4 +1,4 @@
-import parser.c_parser as c_parser
+import my_parser.c_parser as c_parser
 
 def print_chunks(chunks):
     for chunk in chunks:
